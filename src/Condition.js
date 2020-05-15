@@ -28,7 +28,7 @@ class Condition {
     this.fn = function(...args) {
       let options = args.pop();
       let schema = args.pop();
-      let branch = check(...args) ? then : otherwise;
+      let branch = check(...args, options.originalValue) ? then : otherwise;
 
       if (!branch) return undefined;
       if (typeof branch === 'function') return branch(schema);
